@@ -3,6 +3,7 @@ source "https://rubygems.org"
 gem "jekyll", "~> 4.3"
 gem "minima", "~> 2.5"
 gem "html-proofer", "~> 5.0"
+gem "sass-embedded", "< 1.89.0"
 
 # Windows requires these two — without them jekyll serve crashes
 gem "tzinfo", "~> 2.0"
