@@ -1,0 +1,30 @@
+---
+name: HTML Proofer
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.1"
+          bundler-cache: true
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build
+
+      - name: Run HTML Proofer
+        run: |
+          bundle exec htmlproofer ./_site \
+            --disable-external \
+            --checks "Links,Images,Scripts" \
+            --allow-missing-href true
